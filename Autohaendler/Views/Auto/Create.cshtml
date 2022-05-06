@@ -1,0 +1,40 @@
+﻿@model Auto
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Auto erfassen</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Hersteller"></label>
+            <input type="text" asp-for="Hersteller" class="form-control"/>
+            <span asp-validation-for="Hersteller" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Modell"></label>
+            <input type="text" asp-for="Modell" class="form-control"/>
+            <span asp-validation-for="Modell" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Preis"></label>
+            <input type="number" asp-for="Preis" class="form-control"/>
+            <span asp-validation-for="Preis" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Farbe"></label>
+            <input type="text" asp-for="Farbe" class="form-control"/>
+            <span asp-validation-for="Farbe" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+        <a asp-controller="Auto" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back to List
+        </a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}

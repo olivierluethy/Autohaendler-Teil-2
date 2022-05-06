@@ -1,0 +1,36 @@
+﻿@model Auto
+
+<form method="post" asp-action="Edit">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Auto bearbeiten</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Hersteller"></label>
+            <input type="text" asp-for="Hersteller" class="form-control"/>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Modell"></label>
+            <input type="text" asp-for="Modell" class="form-control"/>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Preis"></label>
+            <input type="number" asp-for="Preis" class="form-control"/>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Farbe"></label>
+            <input type="text" asp-for="Farbe" class="form-control"/>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Edit</button>
+        <a asp-controller="Autoverkaeufe" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back to List
+        </a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}

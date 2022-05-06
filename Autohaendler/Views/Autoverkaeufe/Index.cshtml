@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Autoverkaeufe>
+@{
+    ViewData["Title"] = "Index";
+    var ifempty = 0;
+    @foreach(var obj in Model)
+    {
+        ifempty++;
+    }
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Autoverkaufsliste</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Autoverkaeufe" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> &nbsp; Neuen Autoverkauf erfassen
+            </a>
+        </div>
+    </div>
+
+    @if (ifempty == 0)
+    {
+        <h1>Keine Autoverkäufe gefunden</h1>
+    }else{
+        <table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Datum
+            </th>
+            <th>
+                Anzahl
+            </th>
+            <th>
+                Preis
+            </th>
+            <th>
+                Umsatz
+            </th>
+            <th>
+                Bearbeiten
+            </th>
+            <th>
+                Löschen
+            </th>
+        </tr>
+    </thead>
+    <tbody> 
+             @foreach(var obj in Model)
+             {
+                 var umsatz = @obj.Preis * @obj.Anzahl;
+            <tr>
+                <td width="10%">
+                    @obj.Id                
+                </td>
+                <td width="15%">
+                    @obj.Datum           
+                </td>
+                <td width="30%">
+                    @obj.Anzahl         
+                </td>
+                <td width="5%">
+                    @obj.Preis          
+                </td>
+                <td width="5%">
+                    @umsatz
+                </td>
+                <td width="35%">
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Autoverkaeufe" asp-action="Edit" asp-route-id="@obj.Id" 
+                        class="btn btn-primary mx-2"> <i class="bi bi-pencil-square"></i> Edit</a>
+                    </div>          
+                </td>
+                <td width="35%">
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Autoverkaeufe" asp-action="Delete" asp-route-id="@obj.Id" 
+                        class="btn btn-primary mx-2"> <i class="bi bi-trash-fill"></i> Delete</a>
+                    </div>          
+                </td>
+            </tr>   
+            }
+    </tbody>
+</table>
+}
+</div>
